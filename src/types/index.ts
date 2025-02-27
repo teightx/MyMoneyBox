@@ -1,29 +1,25 @@
-export type TransactionType = 'receita' | 'despesa' | 'transferencia';
+export type TransactionType = 'EXPENSE' | 'INCOME';
+export type RecurrenceInterval = 'daily' | 'weekly' | 'monthly' | 'yearly';
 
 export interface Category {
   id: string;
   name: string;
-  icon: string;
-  color: string;
   type: TransactionType;
+  color: string;
+  icon: string;
 }
 
 export interface Transaction {
   id: string;
-  type: TransactionType;
-  amount: number;
   description: string;
+  amount: number;
   date: string;
+  type: TransactionType;
   categoryId: string;
-  tags: string[];
-  recurrent: boolean;
-  recurrenceInfo?: {
-    frequency: 'diaria' | 'semanal' | 'mensal' | 'anual';
-    endDate?: string;
-  };
-  attachments?: string[]; // Base64 das imagens
-  createdAt: string;
-  updatedAt: string;
+  isRecurring?: boolean;
+  recurrenceInterval?: RecurrenceInterval;
+  tags?: string[];
+  notes?: string;
 }
 
 export interface Goal {
@@ -32,10 +28,10 @@ export interface Goal {
   targetAmount: number;
   currentAmount: number;
   deadline: string;
-  category?: string;
+  category: string;
   color: string;
-  createdAt: string;
-  updatedAt: string;
+  icon: string;
+  notes?: string;
 }
 
 export interface Budget {
@@ -51,12 +47,28 @@ export interface Budget {
 export interface User {
   id: string;
   name: string;
-  settings: {
-    theme: 'light' | 'dark';
-    currency: string;
-    useBiometrics: boolean;
-    notifications: boolean;
-    language: string;
+  settings: UserSettings;
+}
+
+export interface UserSettings {
+  theme: 'light' | 'dark';
+  currency: string;
+  language: string;
+  notifications: {
+    enabled: boolean;
+    budgetAlerts: boolean;
+    goalReminders: boolean;
+    billDueDate: boolean;
+  };
+  security: {
+    biometricEnabled: boolean;
+    pinEnabled: boolean;
+    pin: string;
+  };
+  displayPreferences: {
+    showBalance: boolean;
+    defaultView: 'daily' | 'weekly' | 'monthly' | 'yearly';
+    chartType: 'bar' | 'pie' | 'line';
   };
 }
 
