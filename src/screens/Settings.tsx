@@ -9,10 +9,11 @@ import {
   Dialog,
   TextInput,
   Divider,
+  Text,
 } from 'react-native-paper';
 import { useApp } from '../context/AppContext';
 
-const Settings = () => {
+const Settings: React.FC = () => {
   const { colors } = useTheme();
   const { user, updateUser, theme, toggleTheme } = useApp();
   const [nameDialogVisible, setNameDialogVisible] = useState(false);
@@ -69,6 +70,7 @@ const Settings = () => {
     <ScrollView
       style={[styles.container, { backgroundColor: colors.background }]}
     >
+      <Text variant="headlineMedium">Configurações</Text>
       <List.Section>
         <List.Subheader>Perfil</List.Subheader>
         <List.Item
@@ -185,6 +187,8 @@ const Settings = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 16,
+    backgroundColor: '#fff',
   },
   input: {
     marginBottom: 16,

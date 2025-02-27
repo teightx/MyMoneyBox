@@ -18,7 +18,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { useApp } from '../context/AppContext';
 import { formatCurrency } from '../utils/formatters';
 
-const Goals = () => {
+const Goals: React.FC = () => {
   const { colors } = useTheme();
   const { goals, addGoal, updateGoal, deleteGoal } = useApp();
 
@@ -98,6 +98,7 @@ const Goals = () => {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <Text variant="headlineMedium">Metas</Text>
       <ScrollView>
         {goals.map((goal) => (
           <Card key={goal.id} style={styles.goalCard}>

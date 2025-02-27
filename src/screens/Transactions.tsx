@@ -12,6 +12,7 @@ import {
   useTheme,
   Menu,
   Divider,
+  Text,
 } from 'react-native-paper';
 import { useApp } from '../context/AppContext';
 import { RootStackParamList } from '../navigation/AppNavigator';
@@ -23,7 +24,7 @@ type TransactionsScreenNavigationProp = NativeStackNavigationProp<
   'Transactions'
 >;
 
-const Transactions = () => {
+const Transactions: React.FC = () => {
   const navigation = useNavigation<TransactionsScreenNavigationProp>();
   const { colors } = useTheme();
   const { transactions, categories } = useApp();
@@ -109,7 +110,8 @@ const Transactions = () => {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: colors.background }]}>
+    <View style={styles.container}>
+      <Text variant="headlineMedium">Transações</Text>
       <View style={styles.header}>
         <Searchbar
           placeholder="Pesquisar transações"
@@ -191,6 +193,8 @@ const Transactions = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 16,
+    backgroundColor: '#fff',
   },
   header: {
     padding: 16,
