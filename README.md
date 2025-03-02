@@ -94,7 +94,7 @@ Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICE
 
 ## Autor
 
-Seu Nome - [seu-email@exemplo.com](mailto:seu-email@exemplo.com)
+Thiago Santos - [teightx@icloud.com](mailto:seu-email@exemplo.com)
 
 ## Agradecimentos
 
